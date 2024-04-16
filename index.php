@@ -1,3 +1,23 @@
+<?php
+
+$email = $_GET['email'];
+if (isset($email)) {
+    $response = validateEmail($email);
+    $message = generateAlertMsg($response);
+    // var_dump($message);
+}
+
+function validateEmail($email)
+{
+    return filter_var($email, FILTER_VALIDATE_EMAIL) ? true : false;
+}
+
+function generateAlertMsg($response)
+{
+    return $response ? 'Success! you are now subscribed' : 'Error! your email is incorrect';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +52,14 @@
     </header>
     <!-- main -->
     <main>
+        <!-- alert -->
+        <?php if (isset($message)) : ?>
+            <div class="alert alert-<?= $response ? 'success' : 'danger'; ?> alert-dismissible fade show position-absolute w-100" role="alert">
+                <?= $message; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+
         <!-- jumbotron -->
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-5">
@@ -142,7 +170,7 @@
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <div class="d-flex align-items-center gap-1">
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp">
                             <button type="submit" class="btn btn-dark">Submit</button>
                         </div>
                         <div id="emailHelp" class="form-text">Type your email address</div>
