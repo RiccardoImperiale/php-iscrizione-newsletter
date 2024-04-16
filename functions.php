@@ -1,10 +1,17 @@
 <?php
-
-$email = $_GET['email'];
+if (isset($_GET['email'])) {
+    $email = $_GET['email'];
+}
 
 if (isset($email)) {
     $response = validateEmail($email);
     $message = generateAlertMsg($response);
+
+    if ($response) {
+        header('Location: ./views/thankyou.php');
+    } else {
+        header('Location: ./index.php');
+    }
 }
 
 function validateEmail($email)
