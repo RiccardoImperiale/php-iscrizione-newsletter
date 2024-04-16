@@ -12,5 +12,5 @@ function generateAlertMsg($response)
 
 function old($field)
 {
-    return isset($_GET[$field]) ? $_GET[$field] : '';
+    return isset($_GET[$field]) ? htmlspecialchars($_GET[$field]) : '';
 }
