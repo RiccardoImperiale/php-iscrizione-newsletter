@@ -14,6 +14,5 @@ include_once __DIR__ . '/layout/partials/alert.php';
         <h3>You are now subscribed!</h3>
     </div>
 </section>
-</main>
 
 <?php include_once __DIR__ . '/layout/foot.php'; ?>
