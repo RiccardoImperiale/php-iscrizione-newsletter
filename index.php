@@ -43,7 +43,7 @@
             </div>
         </div>
         <!-- posts -->
-        <section class="posts">
+        <section class="posts my-5">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
                     <div class="col">
@@ -129,9 +129,30 @@
                 </div>
             </div>
         </section>
+        <!-- newsletter -->
+        <section class="newsletter bg-secondary text-white py-5">
+            <div class="container">
+                <div class="w-75 m-auto text-center pb-4">
+                    <h3>Newsletter</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque cumque exercitationem vero vitae harum a aspernatur similique labore voluptates impedit iure dolores mollitia sapiente iusto doloribus laboriosam fuga, corporis reiciendis?
+                    </p>
+                </div>
+                <form action="" method="get" class="d-flex align-items-center justify-content-center">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <div class="d-flex align-items-center gap-1">
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                        </div>
+                        <div id="emailHelp" class="form-text">Type your email address</div>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
     <!-- footer -->
-    <footer class="py-4 bg-dark text-white">
+    <footer class="py-5 bg-dark text-white">
         <div class="container">
             <div class="row">
                 <div class="col">
