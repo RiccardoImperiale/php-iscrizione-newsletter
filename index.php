@@ -1,6 +1,23 @@
 <?php
 
-require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/helpers/functions.php';
+
+session_start();
+
+if (isset($_GET['email'])) {
+    $email = $_GET['email'];
+    $response = validateEmail($email);
+    $message = generateAlertMsg($response);
+
+    $_SESSION['response'] = $response;
+    $_SESSION['message'] = $message;
+
+    if ($response) {
+        header('Location: ./views/thankyou.php');
+        die;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -18,20 +35,7 @@ require_once __DIR__ . '/functions.php';
     <header>
         <nav class="navbar bg-dark navbar-expand-md" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Newsletter</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" href="./index.php">Newsletter</a>
             </div>
         </nav>
     </header>
@@ -151,11 +155,11 @@ require_once __DIR__ . '/functions.php';
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque cumque exercitationem vero vitae harum a aspernatur similique labore voluptates impedit iure dolores mollitia sapiente iusto doloribus laboriosam fuga, corporis reiciendis?
                     </p>
                 </div>
-                <form action="./functions.php" method="get" class="d-flex align-items-center justify-content-center">
+                <form action="" method="get" class="d-flex align-items-center justify-content-center">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <div class="d-flex align-items-center gap-1">
-                            <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp" value="<?= old('email') ?>">
                             <button type="submit" class="btn btn-dark">Submit</button>
                         </div>
                         <div id="emailHelp" class="form-text">Type your email address</div>
